@@ -9,11 +9,11 @@ ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
 # the variable of sleep while prints frames after printing frame.
 
 time_sleep = 0.034444  # for ordinary using
-#time_sleep = 0.0330215  # for record
-#time_sleep = 0.032333  # for record
+#time_sleep = 0.0330215  # for recording
+#time_sleep = 0.032333  # for recording
 #time_sleep = 0.035000  # for ordinary using
-#time_sleep = 0.0335  # for record
-#time_sleep = 0.03345  # for record
+#time_sleep = 0.0335  # for recording
+#time_sleep = 0.03345  # for recording
 
 # resize image according to a new width
 def resize_image(image, new_width=100):
