@@ -40,7 +40,8 @@ def main(new_width=100):
     if input("Write the file or play file?\n\n>>> ").lower() == "write":
 
         frames = []
-
+        
+        # from 1st to 5257th 
         for frameNumb in range(1, 5258):
 
             # make the number of image to open like in the folder 
