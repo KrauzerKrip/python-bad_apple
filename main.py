@@ -41,7 +41,7 @@ def main(new_width=100):
 
         frames = []
         
-        # from 1st to 5257th 
+        # from 1st to 5257th frame
         for frameNumb in range(1, 5258):
 
             # make the number of image to open like in the folder 
