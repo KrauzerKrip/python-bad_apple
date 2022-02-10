@@ -4,16 +4,8 @@ import pygame
 
 # ascii characters used to build the output text
 ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
+FPS = 24
 
-
-# the variable of sleep while prints frames after printing frame.
-
-time_sleep = 0.034444  # for ordinary using
-#time_sleep = 0.0330215  # for recording
-#time_sleep = 0.032333  # for recording
-#time_sleep = 0.035000  # for ordinary using
-#time_sleep = 0.0335  # for recording
-#time_sleep = 0.03345  # for recording
 
 # resize image according to a new width
 def resize_image(image, new_width=100):
@@ -84,7 +76,6 @@ def main(new_width=100):
         with open("memory.txt", "r") as f:
             memory = f.read()
 
-
         frames = memory.split("SPLIT")
 
         # music
@@ -92,13 +83,17 @@ def main(new_width=100):
         pygame.mixer.music.load("bad_apple.mp3")
         pygame.mixer.music.play()
 
+        clock = pygame.time.Clock()
+
         # printing the frames        
         for frame in frames:
             print(frame)
-            sleep(time_sleep)
+            clock.tick(FPS)
 
         if input("Exit? Yes?") == "Yes":
             raise SystemExit(0)
+
+
 
  
 # run program
