@@ -1,5 +1,10 @@
 # python-big_apple
 
+## Dependencies:
+    * Pillow
+    * Pygame
+
+
 Memory file with Bad Apple: https://drive.google.com/file/d/1BNI4y6cVUjzSsZBZMib3NMVfyzT1q3Jb/view?usp=sharing
 
 Yes, I use code from the tutorial (https://youtu.be/v_raWlX7tZY) and improved it to make the animations.
