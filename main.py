@@ -6,7 +6,6 @@ import pygame
 ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
 FPS = 24
 
-
 # resize image according to a new width
 def resize_image(image, new_width=100):
     width, height = image.size
@@ -92,9 +91,6 @@ def main(new_width=100):
 
         if input("Exit? Yes?") == "Yes":
             raise SystemExit(0)
-
-
-
  
 # run program
 main()
