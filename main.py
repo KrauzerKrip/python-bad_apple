@@ -4,7 +4,7 @@ import pygame
 
 # ascii characters used to build the output text
 ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
-FPS = 24
+MEMORY_FPS = 24
 
 # resize image according to a new width
 def resize_image(image, new_width=100):
@@ -28,7 +28,28 @@ def pixels_to_ascii(image):
 # the main
 def main(new_width=100):
 
-    if input("Write the file or play file?\n\n>>> ").lower() == "write":
+    input_str = input("Write the file or play file? Type 'write' or 'play [FPS] [START TIME IN SECONDS] ' (e.g: 'play 24 10'). \n\n>>> ").lower()
+
+    if input_str == "write":
+
+       write(new_width)
+
+    else:
+
+        tokens = input_str.split(" ")
+
+        token_FPS = tokens[1]
+        token_time = tokens[2]
+
+        time = int(token_time)
+        FPS = int(token_FPS)
+
+        play(time, FPS)
+
+        if input("Exit?"):
+            raise SystemExit(0)
+
+def write(new_width: int):
 
         frames = []
         
@@ -69,7 +90,8 @@ def main(new_width=100):
                 print("Frame writed!")
                 f.write(str(frame) + "SPLIT")
 
-    else:
+
+def play(start_time: int, FPS: int):
 
         # read the frames from the memory file
         with open("memory.txt", "r") as f:
@@ -77,20 +99,39 @@ def main(new_width=100):
 
         frames = memory.split("SPLIT")
 
-        # music
-        pygame.mixer.init()
-        pygame.mixer.music.load("bad_apple.mp3")
-        pygame.mixer.music.play()
+        framesNew = []
+
+        frame_time = 1 / FPS
+
+        start_frame = start_time / frame_time
+
+        i = 0
+
+        if (FPS > MEMORY_FPS):
+            raise ValueError("FPS can`t be more than MEMORY_FPS")
+
+        ratio = MEMORY_FPS / FPS
+
+        for frame in frames:
+            i = i + 1
+            i2 = int(i / ratio)
+            if (i % ratio) == 0:
+                if (i2 >= start_frame):
+                    frame = frame.replace(".", " ")
+                    framesNew.append(frame)
 
         clock = pygame.time.Clock()
 
+        # music
+        pygame.mixer.init()
+        pygame.mixer.music.load("bad_apple.mp3")
+        pygame.mixer.music.play(start=start_time)
+
         # printing the frames        
-        for frame in frames:
+        for frame in framesNew:
             print(frame)
             clock.tick(FPS)
 
-        if input("Exit? Yes?") == "Yes":
-            raise SystemExit(0)
  
 # run program
 main()
