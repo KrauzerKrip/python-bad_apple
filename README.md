@@ -1,4 +1,4 @@
-# python-big_apple
+# python-bad_apple
 
 ## Dependencies:
     * Pillow
